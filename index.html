@@ -12,8 +12,11 @@
         // socket.on('myCustomEvent',function(data){
         //     document.write(data.description)
         // })
-        socket.emit('myCustomEventFromClientSide','A custom event from CLIENT  side');
-   
+       // socket.emit('myCustomEventFromClientSide','A custom event from CLIENT  side');
+      socket.on('newuserconnect',function(data){
+        document.body.innerHTML = "",
+        document.write(data.message)
+      })
     </script>
 </body>
 </html>
