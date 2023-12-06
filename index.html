@@ -9,6 +9,11 @@
     <p>Hello World</p>
     <script>
         var socket = io();
+        // socket.on('myCustomEvent',function(data){
+        //     document.write(data.description)
+        // })
+        socket.emit('myCustomEventFromClientSide','A custom event from CLIENT  side');
+   
     </script>
 </body>
 </html>
