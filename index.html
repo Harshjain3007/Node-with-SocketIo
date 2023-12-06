@@ -8,15 +8,21 @@
 <body>
     <p>Hello World</p>
     <script>
-        var socket = io();
+       // var socket = io();
         // socket.on('myCustomEvent',function(data){
         //     document.write(data.description)
         // })
        // socket.emit('myCustomEventFromClientSide','A custom event from CLIENT  side');
-      socket.on('newuserconnect',function(data){
-        document.body.innerHTML = "",
-        document.write(data.message)
-      })
+    //   socket.on('newuserconnect',function(data){
+    //     document.body.innerHTML = "",
+    //     document.write(data.message)
+     // })
+                var socket = io('/custom-namespace');
+               socket.on('customEvent',function(data){
+                document.body.innerHTML  = ''
+                document.write(data)
+               })
+
     </script>
 </body>
 </html>
