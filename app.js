@@ -39,12 +39,12 @@ app.get('/',function(req,res){
     
 //})
 
-var cnsp = io.of('/custom-namespace');
+//var cnsp = io.of('/custom-namespace');
 
-cnsp.on('connection',function(socket){
-    console.log('A user connected');
+// cnsp.on('connection',function(socket){
+//     console.log('A user connected');
     
-cnsp.emit('customEvent',"TesterEvent call")
+// cnsp.emit('customEvent',"TesterEvent call")
 
     // socket.on('disconnect',function(){
     //     console.log('A user disconnected');
@@ -52,6 +52,25 @@ cnsp.emit('customEvent',"TesterEvent call")
     //     io.sockets.emit('broadcast',{message:users + 'users connected!'}) 
     // })
     
+//})
+
+var roomno =1
+var full = 0
+
+io.on('connection',function(socket){
+    console.log('A user connected');
+    socket.join("room-"+roomno)
+    io.sockets.in("room-"+roomno).emit('connectedRoom',"You are connected to room no ."+roomno)
+        
+    full++
+    if(full>=2){
+        full=0
+        roomno++
+    }
+    
+    socket.on('disconnect',function(){
+        console.log('A user disconnected',"You are connected to room no. "+roomno);
+    })
 })
 
 http.listen(3000,function(){

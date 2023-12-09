@@ -17,11 +17,16 @@
     //     document.body.innerHTML = "",
     //     document.write(data.message)
      // })
-                var socket = io('/custom-namespace');
-               socket.on('customEvent',function(data){
-                document.body.innerHTML  = ''
+            //     var socket = io('/custom-namespace');
+            //    socket.on('customEvent',function(data){
+            //     document.body.innerHTML  = ''
+            //     document.write(data)
+            //    })
+            var socket = io();
+            socket.on('connectedRoom',function(data){
+                document.body.innerHTML = ''
                 document.write(data)
-               })
+            })
 
     </script>
 </body>
